@@ -14,16 +14,14 @@ In **Figure 1**, the GPU version of Fourier-domain acceleration is compared to t
   <p>Figure 2</p>
 </div>
 
-## Get Started
-### Build From Docker Image
+## Build From Docker Image
 You can simply build the PrestoZJ enviroment from docker image. We have provided `Dockerfile`, and tested it on Ubuntu 20.04 with CUDA 11.7.1 .
 
-**We strongly recommend using Docker for deploying the environment.**
-#### Prerequisites
+### Prerequisites
 
 Ensure you have Docker installed on your system. You can follow the instructions [here](https://docs.docker.com/get-docker/) to install Docker.
 
-#### Steps to Build the Docker Image
+### Steps to Build the Docker Image
 
 1. **Clone the Repository**:
 
@@ -47,14 +45,7 @@ Ensure you have Docker installed on your system. You can follow the instructions
    docker exec -it prestozj_latest /bin/bash
    ```
    These commands will create a Docker container named `prestozj_latest` and enter it.
-4. **Build PrestoZJ**:
 
-   After enter the Docker container, you can build the PrestoZJ with following commands.
-   ```
-   cd /home/soft/presto/src
-   make makewisdom
-   make
-   ```
 
 ## Usage
 The Fourier-domain acceleration (accelsearch_cu.c) section serves as the entry point for the PrestoZL version of the Fourier-domain acceleration program. The command has been expanded from the Presto C to include a batchsize parameter, which controls the number of while loops calculated on the GPU in each iteration. This parameter doesn't need to be explicitly set, its default value is **batchsize=8**. The lower the batchsize is ,the less GPU memory will be used. Other usages remain consistent with the Presto C . Here's an example:
